@@ -3,7 +3,7 @@ import { MOCK_USER_ID } from '../constants';
 import { ApiResponse } from '../types';
 import { handleApiResponse } from './api';
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = '/api';
 
 export const getOwnerDashboardData = async (ownerId: number): Promise<ApiResponse<OwnerDashboardData>> => {
     try {

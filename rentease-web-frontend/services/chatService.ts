@@ -1,42 +1,5 @@
-import { ChatConversation, ChatMessage, ApiError, PaginatedResponse } from '../types';
+import { ChatConversation, ChatMessage, PaginatedResponse } from '../types';
 import { MOCK_USER_ID } from '../constants';
-
-let mockConversations: ChatConversation[] = [
-    {
-        id: 'convo1',
-        participant1_id: MOCK_USER_ID,
-        participant2_id: 2, // Some other user ID
-        related_product_id: 1,
-        last_message_content: "Hi, is this laptop still available for next week?",
-        last_message_at: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 hours ago
-        p2_unread_count: 1, // Unread for MOCK_USER_ID
-        other_user: { id: 2, first_name: "Jane D.", profile_picture_url: "https://picsum.photos/seed/user2/50/50" },
-        related_product_title: "High-Performance Laptop XL2000",
-    },
-    {
-        id: 'convo2',
-        participant1_id: 3,
-        participant2_id: MOCK_USER_ID,
-        related_product_id: 2,
-        last_message_content: "Okay, see you tomorrow for the pickup!",
-        last_message_at: new Date(Date.now() - 3600000 * 24).toISOString(), // 1 day ago
-        p1_unread_count: 0,
-        other_user: { id: 3, first_name: "Mike B.", profile_picture_url: "https://picsum.photos/seed/user3/50/50" },
-        related_product_title: "City Cruiser Bicycle",
-    }
-];
-
-let mockMessages: { [conversationId: string]: ChatMessage[] } = {
-    'convo1': [
-        { id: 'msg1', conversation_id: 'convo1', sender_id: 2, message_type: 'text', message_content: "Hello! I'm interested in your laptop.", sent_at: new Date(Date.now() - 3600000 * 2.2).toISOString() },
-        { id: 'msg2', conversation_id: 'convo1', sender_id: MOCK_USER_ID, message_type: 'text', message_content: "Hi Jane, yes it is!", sent_at: new Date(Date.now() - 3600000 * 2.1).toISOString() },
-        { id: 'msg3', conversation_id: 'convo1', sender_id: 2, message_type: 'text', message_content: "Hi, is this laptop still available for next week?", sent_at: new Date(Date.now() - 3600000 * 2).toISOString() },
-    ],
-    'convo2': [
-        { id: 'msg4', conversation_id: 'convo2', sender_id: MOCK_USER_ID, message_type: 'text', message_content: "Confirming the bicycle rental for tomorrow.", sent_at: new Date(Date.now() - 3600000 * 24.5).toISOString() },
-        { id: 'msg5', conversation_id: 'convo2', sender_id: 3, message_type: 'text', message_content: "Okay, see you tomorrow for the pickup!", sent_at: new Date(Date.now() - 3600000 * 24).toISOString() },
-    ]
-};
 
 const API_BASE_URL = '/api';
 

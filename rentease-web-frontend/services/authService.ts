@@ -78,7 +78,7 @@ export const register = async (credentials: RegisterCredentials): Promise<Regist
 
 export const forgotPassword = async (email: string): Promise<ForgotPasswordResponse> => {
   try {
-    const response = await axios.post('http://localhost:3001/api/auth/request-password-reset', { email });
+    const response = await axios.post('/api/auth/request-password-reset', { email });
     return response.data;
   } catch (error: any) {
     if (error.response) {
