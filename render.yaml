@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: rentease-app
@@ -11,4 +12,19 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+=======
+services:
+  - type: web
+    name: rentease-app
+    env: node
+    plan: free
+    buildCommand: |
+      cd ../rentease-web-frontend && npm install && npm run build
+      cd ../rentease-api-backend && npm install
+    startCommand: npm start
+    rootDir: rentease-api-backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+>>>>>>> 11c1a50de3ed67418cb5c7f2c1a5e7d31879a3a7
       # เพิ่ม environment variables อื่น ๆ ที่จำเป็น เช่น MONGODB_URI, JWT_SECRET, SUPABASE_KEY ฯลฯ 
