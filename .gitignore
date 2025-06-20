@@ -37,3 +37,18 @@ coverage/
 Thumbs.db 
 dist/
 .env
+
+services:
+  - type: web
+    name: rentease-app
+    env: node
+    plan: free
+    buildCommand: |
+      cd ../rentease-web-frontend && npm install && npm run build
+      cd ../rentease-api-backend && npm install
+    startCommand: npm start
+    rootDir: rentease-api-backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # เพิ่ม env อื่น ๆ ที่จำเป็น เช่น MONGODB_URI, JWT_SECRET, SUPABASE_KEY ฯลฯ
